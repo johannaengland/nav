@@ -27,7 +27,7 @@ Get the source::
   cd nav
 
 You might want to choose your version now, otherwise you'll be installing the
-bleeding edge `master` branch. All release versions have git tags, so you can
+bleeding edge ``master`` branch. All release versions have git tags, so you can
 easily find and checkout the latest stable version (although these instructions
 are not valid for versions of NAV prior to 4.9). Use ``git tag`` to list the
 available tags, and ``git checkout x.y.z`` to checkout version ``x.y.z``.
@@ -82,7 +82,7 @@ Create a ``navcron`` user and a corresponding group for NAV to run as::
   sudo adduser --system --home /usr/share/nav \
                --shell /bin/sh --ingroup nav navcron
 
-You should also make sure `navcron` has permission to write log files, pid
+You should also make sure ``navcron`` has permission to write log files, pid
 files and various other state information. You can configure the log and pid
 file directories in :file:`nav.conf`. Then make sure these directories exist
 and are writable for the ``navcron`` user::

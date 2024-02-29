@@ -54,15 +54,15 @@ You should see something that looks like this:
 
 .. image:: swport-connected-to.png
 
-As you can see, this device is connected to `palin-sw`, `idle-gsw`,
-`gilliam-sw`, `cleese-sw` and `chapman-sw`. If there are devices you expect to be
+As you can see, this device is connected to ``palin-sw``, ``idle-gsw``,
+``gilliam-sw``, ``cleese-sw`` and ``chapman-sw``. If there are devices you expect to be
 listed as neighbors here that are not, your problem is **not** with *Netmap*.
 
 Looking for the missing link
 ----------------------------
 
 First, make sure the missing device is actually being monitored by your NAV
-installation. Did you remember to add it using `SeedDB`? If not, add it, and
+installation. Did you remember to add it using :guilabel:`SeedDB`? If not, add it, and
 give the topology detector up to an hour to analyze the new information (or
 you can run it manually, but more on that later). If your device is monitored
 by NAV, please continue reading.
@@ -105,8 +105,8 @@ collected from SNMP queries against your monitored devices:
 3. LLDP (Link Layer Discovery Protocol, *IEEE 802.1AB*)
 4. CDP (Cisco Discovery Protocol)
 
-The first of these is collected by the `ipdevpoll` `ip2mac` job in half-hour
-intervals, whereas the last three are all collected by the `ipdevpoll` `topo`
+The first of these is collected by the ``ipdevpoll ip2mac`` job in half-hour
+intervals, whereas the last three are all collected by the ``ipdevpoll topo``
 job in 15-minute intervals.
 
 These pieces of information are used to build lists of direct (or next-hop)
@@ -134,12 +134,12 @@ each of them.
 The analysis stage
 ------------------
 
-The `navtopology` program runs as a cron job once every hour, analyzing the
-neighbor candidate lists collected by `ipdevpoll`. It prefers LLDP information
+The ``navtopology`` program runs as a cron job once every hour, analyzing the
+neighbor candidate lists collected by ``ipdevpoll``. It prefers LLDP information
 over CDP and CAM information, but will otherwise use a very generic algorithm
 for discerning which of the candidates are true next-hop neighbors.
 
 In a case where you have made changes to which devices are monitored by NAV,
-you can run the command manually, once `ipdevpoll` has finished it's `topo`
+you can run the command manually, once ``ipdevpoll`` has finished it's ``topo``
 job for any new devices. The command :kbd:`navtopology --l2` will run a
 physical topology analysis, and should be pretty quick.

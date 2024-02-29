@@ -24,7 +24,7 @@ On the NAV server, run this program::
 
   migrate_to_whisper.py <PATH>
 
-where `PATH` is the directory where your whisper file hierarchy will be
+where ``PATH`` is the directory where your whisper file hierarchy will be
 placed.
 
 * If your Graphite Carbon backend runs on the same server as NAV, this
@@ -50,7 +50,7 @@ On the NAV server, run this program::
 
   migrate_to_whisper.py <PATH>
 
-where `PATH` is the directory where your whisper file hierarchy will be
+where ``PATH`` is the directory where your whisper file hierarchy will be
 placed.
 
 * If your Graphite Carbon backend runs on the same server as NAV, this
@@ -146,7 +146,7 @@ suggestion that has been employed by the authors of NAV (and requires the
 
    This will make the old NAV server produce a stream of shell commands to
    load RRD files from XML and put these in the same paths as the originals.
-   Piping these commands to a `bash` shell will execute them on the new
+   Piping these commands to a ``bash`` shell will execute them on the new
    server.
 
    .. warning:: Yes, we know this is an ugly hack; make sure you make a backup
@@ -204,9 +204,9 @@ you can have multiple, overlapping archives which consolidate data points in
 different ways. In Whisper, the aggregation method is an attribute of the
 Whisper file itself.
 
-NAV 3 may have RRD files with overlapping archives to include `maximum` and
-`average` consolidation of the same data points. The default of the NAV 4
-Graphite setup is to use the `average` aggregation for Whisper files. The
+NAV 3 may have RRD files with overlapping archives to include ``maximum`` and
+``average`` consolidation of the same data points. The default of the NAV 4
+Graphite setup is to use the ``average`` aggregation for Whisper files. The
 conversion tool will therefore only extract the average values from the RRD
 files.
 

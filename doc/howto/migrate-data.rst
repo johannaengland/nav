@@ -131,15 +131,15 @@ In a long-running NAV installation, most of the data will be be machinetracker
 logs, i.e. timestamped ARP and CAM records from your routers and switches. If
 the logs are unneeded on the destination installation, you may wish to keep
 only the currently active records. This will *greatly* reduce the size of your
-data dump. You can use the `-a` and `-c` options (or their long-form
+data dump. You can use the ``-a`` and ``-c`` options (or their long-form
 counterparts) to only dump open ARP and CAM records, respectively::
 
   navpgdump --only-open-arp --only-open-cam > nav-data.sql
 
-Using the `-e` option, you can exclude the entire contents of selected tables.
+Using the ``-e`` option, you can exclude the entire contents of selected tables.
 This may require knowledge of NAV's data model before you proceed. If you know
 your way around SQL, you can even enact more advanced content filters using
-the `-f` or `--filter` option.
+the ``-f`` or ``--filter`` option.
 
 .. tip:: See the output of :kbd:`navpgdump --help` for a complete overview of
          the supported options.
