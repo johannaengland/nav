@@ -173,7 +173,7 @@ vendor, software?
 Some devices are particularly slow to respond to SNMP requests at large, while
 some are slow to respond to particular SNMP requests - in particular, we often
 see agents that are slow to build large responses to ``GET-BULK`` requests,
-which NAV always uses in a SNMP *v2c* session.
+which NAV always uses in an SNMP *v2c* session.
 
 You can try to alleviate the timeout problems by increasing ipdevpoll's SNMP
 request timeout, alternatively in conjunction with reducing the
