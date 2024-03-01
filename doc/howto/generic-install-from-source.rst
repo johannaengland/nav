@@ -19,7 +19,7 @@ Build requirements
 To build NAV, you need at least the following:
 
  * Python >= 3.7.0
- * Sphinx >= 1.0 (for building this documentation)
+ * Sphinx >= 5.3.0 (for building this documentation)
 
 Runtime requirements
 --------------------
