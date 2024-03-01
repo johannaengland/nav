@@ -108,7 +108,7 @@ Initializing the database
 Before NAV can run, the database schema must be installed in your PostgreSQL
 server.  NAV can create a database user and a database schema for you.
 
-Choose a password for your NAV database user and set this in the ``userpw_nav``
+Choose a password for your NAV database user and set this in the ``userpw_nav`` option
 in the :file:`db.conf` config file. As the ``postgres`` superuser run the following
 command::
 
@@ -126,7 +126,7 @@ served in any web server environment supported by Django (chiefly, any
 environment that supports *WSGI*). This guide is primarily concerned with
 Apache 2.
 
-An example configuration file for Apache2 is provided the configuration
+An example configuration file for Apache2 is provided in the configuration
 directory, :file:`apache/apache.conf.example`. This configuration uses
 ``mod_wsgi`` to serve the NAV web application, and can be modified to suit your
 installation paths. Once complete, it can be included in your virtualhost

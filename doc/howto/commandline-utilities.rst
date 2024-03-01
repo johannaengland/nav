@@ -51,8 +51,7 @@ These handler plugins are currently available from :program:`servicemon`:
 ----------------
 
 This command is useful to generate lists of devices registered in NAV. Used
-without arguments it will print out the sysname of every NAV-registered
-device.
+without arguments it will print out the sysname of every device registered in NAV.
 
 It is mostly a programmer's interface to filtering the device list: It takes an
 argument that must be valid Python code and a valid Django QuerySet filtering
@@ -143,10 +142,10 @@ Usage
 Recipes
 ~~~~~~~
 
-Let's say you are interested in figuring which of your devices support the
+Let's say you are interested in figuring out which of your devices support the
 ``CISCO-VLAN-MEMBERSHIP-MIB::vmMembershipSummaryTable`` object. First, you need
 the full OID of this object, and then you can test it against all your devices
-thus (by also utiliziing the :command:`navdf` command mentioned above):
+thus (by also utilizing the :command:`navdf` command mentioned above):
 
 .. code-block:: console
 
@@ -253,7 +252,7 @@ Usage
 :command:`navuser`
 ------------------
 
-This commands interacts with the NAV web interface's user registry, enabling
+This command interacts with the NAV web interface's user registry, enabling
 you to use the command line to add new user accounts, set account passwords,
 lock/unlock accounts or give admin privileges to select accounts.
 

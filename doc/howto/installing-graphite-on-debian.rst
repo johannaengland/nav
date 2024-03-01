@@ -21,7 +21,7 @@ Getting Graphite
 
 A full Graphite setup consists of the *Carbon* backend server, which receives
 metrics over TCP or UDP, and a *Graphite web frontend*, which enables browsing
-and retrievial/rendering of the stored metrics. NAV will collect metrics and
+and retrieval/rendering of the stored metrics. NAV will collect metrics and
 send to the former, while utilizing the latter to retrieve metrics and render
 graphs.
 
@@ -60,14 +60,14 @@ The first line ensures that Carbon will not delay creating Whisper backend
 files for the metrics NAV sends it. The default setting is a maximum of 50
 creates per minute (the setting exists to limit I/O strain on huge setups),
 which means that when bootstrapping a NAV installation, hours to days can pass
-before all its metrics are being actually stored in Graphite.
+before all its metrics are actually being stored in Graphite.
 
 The second line ensures that Carbon accepts metrics on a UDP socket, which is
 required by NAV.
 
 Carbon also needs to know the resolution at which to store your time-series
 data, for how long to store it, and how to roll up data from high resolution
-data archives to lower resolution archives. These are the storage schemas and
+data archives to lower resolution data archives. These are the storage schemas and
 aggregation methods. NAV provides its own config examples for this; on a
 Graphite backend *dedicated to NAV*, you can simply symlink these config files
 from NAV::
@@ -118,7 +118,7 @@ should be a random string of characters; we can suggest using the
 
 Then edit :file:`/etc/graphite/local_settings.py` (do not, under any
 circumstances, re-use the actual example value of ``SECRET_KEY`` here!) and
-make to set these three settings:
+set these three settings:
 
 .. code-block:: python
 

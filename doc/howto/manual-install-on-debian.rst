@@ -97,7 +97,7 @@ Sending SMS messages using a locally attached GSM device
 If you want to use NAV's SMS functionality in conjunction with Gammu, you
 should make sure the ``navcron`` user is allowed to write to the serial device
 you've connected your GSM device to. Often, this device has a group ownership
-set to the ``dialout`` group, so the easieast route is to add the ``navcron`` user
+set to the ``dialout`` group, so the easiest route is to add the ``navcron`` user
 to the ``dialout`` group::
 
   sudo addgroup navcron dialout
@@ -106,7 +106,7 @@ to the ``dialout`` group::
 8. Ensure that a writeable uploads directory exists
 ===================================================
 
-The NAV web ui allows you to upload and attach images to room and location
+The NAV web UI allows you to upload and attach images to room and location
 objects. These images will be stored in the file system, so NAV needs a
 writeable directory to store them in (and from where the web server can serve
 them).
@@ -204,4 +204,4 @@ system </howto/installing-graphite-on-debian>`.
 Start using NAV
 ===============
 
-You should now be ready to move on the the :doc:`/intro/getting-started` guide.
+You should now be ready to move on to the :doc:`/intro/getting-started` guide.

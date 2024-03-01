@@ -12,8 +12,8 @@ the utility and limitations of the conversion process.
 
 
 .. warning:: You cannot upgrade directly from NAV 3 to 4.6 and keep your RRD
-             data. You will either have make a decision to lose your old RRD
-             data, or perform an intermediary upgrade via an NAV 4 version.
+             data. You will either have to make a decision to lose your old RRD
+             data, or perform an intermediary upgrade via a NAV 4 version.
 
 
 *****
@@ -177,7 +177,7 @@ for NAV data. The precisions and lengths of the defined retention archives
 will in some instances deviate from those used in NAV 3's RRD files; some data
 will be stored at higher precision in NAV 4 compared to NAV 3.
 
-For practical resons, the conversion tool will mirror the RRAs in RRD files as
+For practical reasons, the conversion tool will mirror the RRAs in RRD files as
 retention archives in the Whisper files it creates, regardless of this
 configuration. However, the highest precision archives are important, so if
 the recommended precision in NAV 4 is higher than what the old RRD file
