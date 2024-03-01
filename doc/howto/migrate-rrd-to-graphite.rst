@@ -20,7 +20,7 @@ the utility and limitations of the conversion process.
 TL;DR
 *****
 
-On the NAV server, run this program::
+On the NAV server run this program::
 
   migrate_to_whisper.py <PATH>
 
@@ -165,7 +165,7 @@ Data archives
 
 What _rrdtool refers to as a Round Robin Archive (RRA) corresponds to what
 Whisper_ calls a "retention archive". Each archive stores data points at a
-specific time resolution, for a specific period of time.
+specific time resolution for a specific period of time.
 
 Conventional wisdom says "recent data is more interesting than old data",
 meaning one wants high resolution on recent data, but low resolution on old
@@ -199,9 +199,9 @@ Aggregation methods
 What _rrdtool refers to as "consolidation functions" corresponds to what
 Whisper_ calls "aggregation methods".
 
-In an RRD file, consolidation functions are an attribute of each RRA, meaning
+In an RRD file consolidation functions are an attribute of each RRA, meaning
 you can have multiple, overlapping archives which consolidate data points in
-different ways. In Whisper, the aggregation method is an attribute of the
+different ways. In Whisper the aggregation method is an attribute of the
 Whisper file itself.
 
 NAV 3 may have RRD files with overlapping archives to include ``maximum`` and

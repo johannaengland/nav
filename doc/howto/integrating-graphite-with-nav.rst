@@ -80,7 +80,7 @@ before letting NAV send data to Graphite:
    These will ensure that time-series data sent to Graphite by NAV will be
    aggregated properly when Graphite rolls them into lower-precision archives.
 
-Ensure :program:`carbon-cache` is restarted to make these changes take effect,
+Ensure :program:`carbon-cache` is restarted to make these changes take effect
 before adding devices to monitor in your NAV installation.
 
 .. _PostgreSQL: https://www.postgresql.org/

@@ -51,10 +51,10 @@ These handler plugins are currently available from :program:`servicemon`:
 ----------------
 
 This command is useful to generate lists of devices registered in NAV. Used
-without arguments, it will print out the sysname of every NAV-registered
+without arguments it will print out the sysname of every NAV-registered
 device.
 
-It is mostly a programmers interface to filtering the device list: It takes an
+It is mostly a programmer's interface to filtering the device list: It takes an
 argument that must be valid Python code and a valid Django QuerySet filtering
 function, and therefore requires a bit of knowledge about how the NAV database
 is modeled in the Django ORM.
@@ -130,7 +130,7 @@ This command is useful for simple SNMP MIB conformance testing of
 NAV-registered devices *in bulk*.
 
 It takes an SNMP OID as its only argument, and a list of NAV-registered device
-name in its standard input: It then runs SNMP ``GET-NEXT`` commands for the
+name in its standard input. It then runs SNMP ``GET-NEXT`` commands for the
 given OID against all the listed devices (using the SNMP credentials stored in
 NAV), testing to see whether the device response is from within a subtree of
 the requested OID. Any device that responds with a value from the subtree will

@@ -47,7 +47,7 @@ files::
 *However*, some of the required modules are C extensions that will require the
 presence of some C libraries to be correctly built (unless PyPI provides binary
 wheels for your platform). These include the ``psycopg2`` driver and the
-``python-ldap`` and ``Pillow`` modules).
+``python-ldap`` and ``Pillow`` modules.
 
 The current Python requirements are as follows:
 
@@ -109,7 +109,7 @@ Before NAV can run, the database schema must be installed in your PostgreSQL
 server.  NAV can create a database user and a database schema for you.
 
 Choose a password for your NAV database user and set this in the ``userpw_nav``
-in the :file:`db.conf` config file. As the ``postgres`` superuser, run the following
+in the :file:`db.conf` config file. As the ``postgres`` superuser run the following
 command::
 
   navsyncdb -c
