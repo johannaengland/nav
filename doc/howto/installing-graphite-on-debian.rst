@@ -12,9 +12,10 @@ installation, dedicated to NAV, on a **Debian 10 (Buster)** or a **Debian 11
              graphs </faq/graph_gaps>`, which you will need to resolve
              manually after-the-fact.
 
-A more `generic and up-to-date installation guide for Graphite
-<https://graphite.readthedocs.io/en/latest/install.html>`_ can be found in the
-Graphite project's own documentation.
+A more generic and up-to-date installation guide for Graphite
+can be found in the
+`Graphite project's own documentation
+<https://graphite.readthedocs.io/en/latest/install.html>`_.
 
 Getting Graphite
 ================
@@ -37,7 +38,7 @@ running NAV, all you need to do to install Graphite on **Debian 10 or 11** is::
    We therefore provide a backported ``graphite-web`` package in NAV's official
    Debian APT repositories. If you don't already have this repository
    configured as a source in your Debian server, instructions to do so can be
-   found at https://nav.uninett.no/install-instructions/#debian
+   found on the `NAV website <https://nav.uninett.no/install-instructions/#debian>`_.
 
 Configuring Carbon
 ==================
