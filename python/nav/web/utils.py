@@ -19,6 +19,9 @@ import base64
 import io
 import os
 from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Optional
+import zipfile
 
 from django import forms
 from django.http import HttpResponse, HttpRequest
@@ -26,7 +29,6 @@ from django.views.generic.list import ListView
 
 import qrcode
 from PIL import ImageDraw, ImageFont
-import qrcode.image.pil
 
 
 def is_ajax(request: HttpRequest) -> bool:
@@ -133,6 +135,29 @@ def generate_qr_codes_as_byte_strings(url_dict: dict[str, str]) -> list[str]:
             convert_bytes_buffer_to_bytes_string(bytes_buffer=qr_code_byte_buffer)
         )
     return qr_code_byte_strings
+
+
+def generate_qr_codes_as_zip_file(
+    url_dict: dict[str, str], file_path: Optional[Path] = None
+) -> str:
+    """
+    Takes a dict of the form {name:url} and a file path and saves a ZIP file
+    containing QR codes as PNGs under the given path, if supplied
+
+    Returns the name of the ZIP file
+    """
+    qr_codes_dict = dict()
+    for caption, url in url_dict.items():
+        qr_codes_dict[caption] = generate_qr_code(url=url, caption=caption)
+
+    if file_path is None:
+        file_path = os.path.join(os.path.dirname(__file__), "static/qr_codes.zip")
+
+    with zipfile.ZipFile(file_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for image_name, bytes_stream in qr_codes_dict.items():
+            zf.writestr(image_name + ".png", bytes_stream.getvalue())
+
+    return os.path.basename(file_path)
 
 
 def validate_timedelta_for_overflow(days: int = 0, hours: int = 0):
