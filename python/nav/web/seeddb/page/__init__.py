@@ -47,7 +47,7 @@ def view_switcher(
     list_view=None,
     move_view=None,
     delete_view=None,
-    generate_qr_codes_view=None,
+    download_qr_codes_view=None,
 ):
     """Selects appropriate view depending on POST data."""
     if request.method == 'POST':
@@ -56,5 +56,5 @@ def view_switcher(
         elif 'delete' in request.POST:
             return delete_view(request)
         elif 'qr_code' in request.POST:
-            return generate_qr_codes_view(request)
+            return download_qr_codes_view(request)
     return list_view(request)

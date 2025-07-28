@@ -65,7 +65,7 @@ def room(request):
         list_view=room_list,
         move_view=room_move,
         delete_view=room_delete,
-        generate_qr_codes_view=room_generate_qr_codes,
+        download_qr_codes_view=room_download_qr_codes,
     )
 
 
@@ -93,8 +93,8 @@ def room_move(request):
     )
 
 
-def room_generate_qr_codes(request):
-    """Controller for generating qr codes for rooms"""
+def room_download_qr_codes(request):
+    """Controller for downloading qr codes for rooms"""
     if not request.POST.getlist('object'):
         new_message(
             request,

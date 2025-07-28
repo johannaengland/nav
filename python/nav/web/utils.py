@@ -139,10 +139,12 @@ def generate_qr_codes_as_byte_strings(url_dict: dict[str, str]) -> list[str]:
 
 def generate_qr_codes_zip_response(url_dict: dict[str, str]) -> FileResponse:
     """
-    Takes a dict of the form {name:url} and a file path and saves a ZIP file
-    containing QR codes as PNGs under the given path, if supplied
+    Takes a dict of the form {name:url} and returns a FileResponse object that
+    represents a ZIP file consisting of named PNG images of QR codes which map
+    each name of the dict to its url.
 
-    Returns the name of the ZIP file
+    Returning the FileResponse in a Django view causes the ZIP file to be delivered
+    in the form of a download attachment in web browsers.
     """
     qr_codes_dict = dict()
     for caption, url in url_dict.items():

@@ -66,7 +66,7 @@ def netbox(request):
         list_view=netbox_list,
         move_view=netbox_move,
         delete_view=netbox_delete,
-        generate_qr_codes_view=netbox_generate_qr_codes,
+        download_qr_codes_view=netbox_download_qr_codes,
     )
 
 
@@ -124,8 +124,8 @@ def netbox_pre_deletion_mark(queryset):
     queryset.update(deleted_at=datetime.datetime.now(), up_to_date=False)
 
 
-def netbox_generate_qr_codes(request):
-    """Controller for generating qr codes for netboxes"""
+def netbox_download_qr_codes(request):
+    """Controller for downloading qr codes for netboxes"""
     if not request.POST.getlist('object'):
         new_message(
             request,
