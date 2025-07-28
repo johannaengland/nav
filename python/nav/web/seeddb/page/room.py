@@ -34,7 +34,7 @@ from nav.web.seeddb.utils.delete import render_delete
 from nav.web.seeddb.utils.move import move
 from nav.web.seeddb.utils.bulk import render_bulkimport
 from nav.web.utils import (
-    generate_qr_codes_as_zip_file,
+    generate_qr_codes_zip_response,
 )
 
 from ..forms import RoomForm, RoomFilterForm, RoomMoveForm
@@ -110,21 +110,7 @@ def room_generate_qr_codes(request):
         url = request.build_absolute_uri(reverse('room-info', kwargs={'roomid': id}))
         url_dict[id] = url
 
-    qr_codes_zip_file_name = generate_qr_codes_as_zip_file(url_dict=url_dict)
-
-    info = RoomInfo()
-    value_list = ('id', 'location', 'description', 'position', 'data')
-    query = Room.objects.select_related("location").all()
-    filter_form = RoomFilterForm(request.GET)
-    return render_list(
-        request,
-        query,
-        value_list,
-        'seeddb-room-edit',
-        filter_form=filter_form,
-        extra_context=info.template_context
-        | {"qr_codes_zip_file_name": qr_codes_zip_file_name},
-    )
+    return generate_qr_codes_zip_response(url_dict=url_dict)
 
 
 def room_delete(request, object_id=None):

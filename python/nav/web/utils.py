@@ -24,7 +24,7 @@ from typing import Optional
 import zipfile
 
 from django import forms
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, FileResponse
 from django.views.generic.list import ListView
 
 import qrcode
@@ -137,9 +137,7 @@ def generate_qr_codes_as_byte_strings(url_dict: dict[str, str]) -> list[str]:
     return qr_code_byte_strings
 
 
-def generate_qr_codes_as_zip_file(
-    url_dict: dict[str, str], file_path: Optional[Path] = None
-) -> str:
+def generate_qr_codes_zip_response(url_dict: dict[str, str]) -> FileResponse:
     """
     Takes a dict of the form {name:url} and a file path and saves a ZIP file
     containing QR codes as PNGs under the given path, if supplied
@@ -150,14 +148,13 @@ def generate_qr_codes_as_zip_file(
     for caption, url in url_dict.items():
         qr_codes_dict[caption] = generate_qr_code(url=url, caption=caption)
 
-    if file_path is None:
-        file_path = os.path.join(os.path.dirname(__file__), "static/qr_codes.zip")
-
-    with zipfile.ZipFile(file_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for image_name, bytes_stream in qr_codes_dict.items():
             zf.writestr(image_name + ".png", bytes_stream.getvalue())
+    buf.seek(0)
 
-    return os.path.basename(file_path)
+    return FileResponse(buf, as_attachment=True, filename="qr_codes.zip")
 
 
 def validate_timedelta_for_overflow(days: int = 0, hours: int = 0):

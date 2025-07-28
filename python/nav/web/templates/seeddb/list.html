@@ -24,13 +24,9 @@
           <input type="submit" name="delete" value="Delete selected" class="button small secondary"/>
         {% endif %}
         {% if not hide_qr_code %}
-          <input type="submit" name="qr_code" value="Generate QR codes for selected" class="button small secondary"/>
+          <input type="submit" name="qr_code" value="Download QR codes for selected" class="button small secondary"/>
         {% endif %}
       </div>
-    {% endif %}
-
-    {% if qr_codes_zip_file_name %}
-      <a href="/static/{{ qr_codes_zip_file_name }}" download="nav_qr_codes">Download generated QR Codes</a>
     {% endif %}
 
     <div id="tablewrapper" class="notvisible" data-forpage="{{ request.path }}" data-page="{{ active_page }}">

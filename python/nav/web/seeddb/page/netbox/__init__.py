@@ -37,7 +37,7 @@ from nav.web.seeddb.utils.move import move
 from nav.web.seeddb.utils.bulk import render_bulkimport
 from nav.web.seeddb.page.netbox.forms import NetboxFilterForm, NetboxMoveForm
 from nav.web.utils import (
-    generate_qr_codes_as_zip_file,
+    generate_qr_codes_zip_response,
 )
 
 
@@ -143,35 +143,7 @@ def netbox_generate_qr_codes(request):
         )
         url_dict[str(netbox)] = url
 
-    qr_codes_zip_file_name = generate_qr_codes_as_zip_file(url_dict=url_dict)
-
-    info = NetboxInfo()
-    query = (
-        Netbox.objects.select_related("room", "category", "type", "organization")
-        .prefetch_related("profiles")
-        .annotate(profile=ArrayAgg("profiles__name"))
-    )
-    filter_form = NetboxFilterForm(request.GET)
-    value_list = (
-        'sysname',
-        'room',
-        'ip',
-        'category',
-        'organization',
-        'profile',
-        'type__name',
-    )
-    return render_list(
-        request,
-        query,
-        value_list,
-        'seeddb-netbox-edit',
-        edit_url_attr='pk',
-        filter_form=filter_form,
-        template='seeddb/list_netbox.html',
-        extra_context=info.template_context
-        | {"qr_codes_zip_file_name": qr_codes_zip_file_name},
-    )
+    return generate_qr_codes_zip_response(url_dict=url_dict)
 
 
 def netbox_move(request):

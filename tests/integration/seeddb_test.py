@@ -1,3 +1,6 @@
+import io
+from zipfile import ZipFile
+
 from django.urls import reverse
 from django.http import Http404
 from django.test.client import RequestFactory
@@ -160,8 +163,17 @@ def test_generating_qr_codes_for_netboxes_should_succeed(client, netbox):
         },
     )
 
+    # Check response headers
     assert response.status_code == 200
-    assert 'Download generated QR Codes' in smart_str(response.content)
+    assert response.headers["Content-Type"] == "application/zip"
+    assert int(response.headers["Content-Length"]) > 0
+    assert "attachment" in response.headers["Content-Disposition"]
+    assert "qr_codes.zip" in response.headers["Content-Disposition"]
+
+    # Check response content
+    buf = io.BytesIO(response.content)
+    assert ZipFile(buf, "r").namelist == [f"{netbox.id}.png"]
+
 
 
 def test_generating_qr_codes_for_no_selected_netboxes_should_show_error(client, netbox):
@@ -194,8 +206,16 @@ def test_generating_qr_codes_for_rooms_should_succeed(client):
         },
     )
 
+    # Check response headers
     assert response.status_code == 200
-    assert 'Download generated QR Codes' in smart_str(response.content)
+    assert response.headers["Content-Type"] == "application/zip"
+    assert int(response.headers["Content-Length"]) > 0
+    assert "attachment" in response.headers["Content-Disposition"]
+    assert "qr_codes.zip" in response.headers["Content-Disposition"]
+
+    # Check response content
+    buf = io.BytesIO(response.content)
+    assert ZipFile(buf, "r").namelist == ["myroom.png"]
 
 
 def test_generating_qr_codes_for_no_selected_rooms_should_show_error(client, netbox):
