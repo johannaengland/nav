@@ -171,8 +171,8 @@ def test_generating_qr_codes_for_netboxes_should_succeed(client, netbox):
     assert "qr_codes.zip" in response.headers["Content-Disposition"]
 
     # Check response content
-    buf = io.BytesIO(response.content)
-    assert ZipFile(buf, "r").namelist == [f"{netbox.id}.png"]
+    buf = io.BytesIO(b"".join(response.streaming_content))
+    assert ZipFile(buf, "r").namelist() == [f"{netbox.sysname}.png"]
 
 
 
@@ -214,8 +214,8 @@ def test_generating_qr_codes_for_rooms_should_succeed(client):
     assert "qr_codes.zip" in response.headers["Content-Disposition"]
 
     # Check response content
-    buf = io.BytesIO(response.content)
-    assert ZipFile(buf, "r").namelist == ["myroom.png"]
+    buf = io.BytesIO(b"".join(response.streaming_content))
+    assert ZipFile(buf, "r").namelist() == ["myroom.png"]
 
 
 def test_generating_qr_codes_for_no_selected_rooms_should_show_error(client, netbox):
